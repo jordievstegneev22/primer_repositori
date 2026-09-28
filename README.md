@@ -1,5 +1,5 @@
 # primer_repositori
-El primer repositori 
+El primer repositori-smx
 
 # Projecte 2
 jordi evstegneev
