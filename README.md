@@ -2,6 +2,6 @@
 El primer repositori 
 
 # Projecte 2
-
 jordi evstegneev
 projecta intermodular smx 2
+28/09/2026
