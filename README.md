@@ -76,4 +76,4 @@ Crear una màquina virtual amb VirtualBox i instal·lar-hi Ubuntu Server. L'obje
 ## Recursos
 - [Pàgina oficial de VirtualBox](https://www.virtualbox.org/)
 - [Descàrrega d'Ubuntu Server](https://ubuntu.com/download/server)
-- [Documentació consultada](https://docs.github.com/)
+
