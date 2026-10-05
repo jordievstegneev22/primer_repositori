@@ -1,82 +1,79 @@
-# Fitxa tècnica: Creació d'un servidor Ubuntu Server en una màquina virtual amb VirtualBox
+# Fitxa tècnica: Com crear un servidor Ubuntu Server amb VirtualBox
 
 ## Objectiu
 
-Crear una màquina virtual amb Oracle VirtualBox i instal·lar-hi Ubuntu Server 26.04.1 LTS, deixant el servidor operatiu, amb accés remot per SSH i connexió a Internet. En acabar, qualsevol company hauria de poder repetir el procediment des de zero només seguint aquest document.
+Crear una màquina virtual amb VirtualBox i instal·lar-hi Ubuntu Server. L'objectiu és tenir un servidor funcionant dins de l'ordinador, sense haver de tocar el sistema operatiu real. És la primera vegada que ho faig, així que he anotat tots els passos tal com els he anat fent.
 
 ## Materials
 
-- Equip amfitrió amb Windows 11 i permisos d'administrador.
-- Oracle VirtualBox 7 o superior.
-- Imatge ISO `ubuntu-26.04.1-live-server-amd64.iso` (uns 2,73 GB).
-- Virtualització activada a la BIOS/UEFI (VT-x per a Intel, AMD-V per a AMD).
-- Espai lliure al disc de l'amfitrió: mínim 50 GB.
-- Connexió a Internet per descarregar paquets i actualitzacions.
+- Un ordinador amb Windows.
+- El programa VirtualBox.
+- La imatge ISO d'Ubuntu Server (`ubuntu-26.04.1-live-server-amd64.iso`).
+- Uns 50 GB lliures al disc.
+- Connexió a Internet.
 
 ## Procediment
+1. Obrir VirtualBox i clicar el botó **Nova**.
 
-## Comprovacions
-- [ ] La màquina virtual arrenca des del disc dur i no des de la ISO.
-- [ ] Es pot iniciar sessió amb l'usuari creat.
-- [ ] El sistema mostra Ubuntu 26.04.1 LTS (`lsb_release -a`).
-- [ ] La interfície `enp0s3` té l'adreça `10.0.2.15` (`ip a`).
-- [ ] Hi ha connexió a Internet (`ping -c4 google.com`).
-- [ ] El servei SSH està actiu (`systemctl status ssh`).
-- [ ] El disc està configurat amb LVM (`lsblk`).
+2. Posar un nom a la màquina (jo li he posat `server ubuntu practica`) i seleccionar on es guarda. A **ISO Image** indicar on està el fitxer d'Ubuntu Server descarregat.
 
-## Incidències i solucions
-| Incidència | Solució |
-|---         |---      |
-| La instal·lació s'inicia sola i no deixa triar opcions | S'havia deixat marcada *Proceed with Unattended Installation*; esborrar la màquina i tornar-la a crear amb l'opció desmarcada. |
-| Només apareixen opcions de 32 bits | Activar la virtualització (VT-x / AMD-V) a la BIOS i desactivar Hyper-V a Windows. |
-| En reiniciar torna a arrencar l'instal·lador | Desmuntar la ISO des de Dispositius → Unitats òptiques → Treu el disc. |
-| No es pot connectar per SSH des de l'amfitrió | En mode NAT cal redirigir ports, o canviar l'adaptador a mode pont. |
-| El ratolí i el teclat es queden atrapats | Prémer la tecla amfitriona (Ctrl dreta) per alliberar-los. |
+3. Desmarcar la casella **Proceed with Unattended Installation**. Si no es desmarca, el programa ho instal·la tot sol i no es pot anar triant les opcions.
 
-## Recursos
-- [Manual oficial de VirtualBox](https://www.virtualbox.org/manual/)
-- [Descàrrega d'Ubuntu Server](https://ubuntu.com/download/server)
-- [Documentació consultada](https://docs.github.com/)
+4. A l'apartat **Specify virtual hardware**, posar `3108 MB` de memòria i `4` processadors.
 
-1. Obrir VirtualBox i prémer el botó **Nova**. Posar el nom de la màquina (`server ubuntu practica`), triar la carpeta on es desarà i seleccionar la ruta de la imatge ISO. VirtualBox detecta automàticament que és un sistema Linux/Ubuntu de 64 bits.
+5. A l'apartat **Specify virtual hard disk**, posar `50 GB` de mida i deixar la resta com està. Clicar **Finish**.
 
-   > **Important:** cal desmarcar la casella *Proceed with Unattended Installation*. Si es deixa marcada, VirtualBox fa la instal·lació automàticament i no es poden triar les opcions.
+6. Seleccionar la màquina a la llista i clicar **Inicia**.
 
-2. A **Specify virtual hardware**, assignar `3108 MB` de memòria base i `4` processadors.
+7. Surt una pantalla negra amb lletres (el GRUB). Deixar seleccionat **Try or Install Ubuntu Server** i prémer Enter.
 
-3. A **Specify virtual hard disk**, crear un disc nou de `50 GB`, de tipus VDI i amb reserva dinàmica.
+8. Triar l'idioma: **Español**. A partir d'aquí tot es fa amb les fletxes del teclat i Enter, el ratolí no serveix.
 
-4. Comprovar al gestor de VirtualBox que el resum és correcte: memòria, processadors, disc de 50 GB i adaptador de xarxa 1 en mode NAT.
+9. Deixar marcat **Ubuntu Server** i anar a **Hecho**.
 
-5. Prémer **Inicia**. Al menú GRUB, seleccionar **Try or Install Ubuntu Server**.
+10. A la pantalla de xarxa, només comprovar que surt una adreça IP (a mi em va sortir `10.0.2.15`) i continuar.
 
-6. Triar l'idioma de l'instal·lador (Español) i acceptar la distribució de teclat proposada.
+11. Deixar l'adreça del servidor de descàrregues tal com ve i continuar.
 
-7. A *Choose the type of installation*, deixar seleccionat **Ubuntu Server** i continuar amb **Hecho**.
+12. A la pantalla del disc, deixar marcat **Use an entire disk** i continuar. Quan avisa que esborrarà el disc, acceptar: només esborra el disc virtual, no el de l'ordinador real.
 
-8. A *Network configuration*, verificar que la interfície `enp0s3` ha rebut una adreça per DHCP (`10.0.2.15/24`, pròpia del mode NAT).
+13. Omplir el nom, el nom del servidor, l'usuari i la contrasenya.
 
-9. Deixar el mirall de descàrrega per defecte (`http://archive.ubuntu.com/ubuntu/`).
+    > Jo he posat `usuari` com a nom d'usuari i també `usuari` com a contrasenya, perquè és fàcil de recordar. Cadascú pot posar el que vulgui, però és important no oblidar-la perquè després cal per entrar.
 
-10. A *Guided storage configuration*, triar **Use an entire disk** i marcar **Set up this disk as an LVM group**.
+14. A la pantalla d'**Ubuntu Pro**, deixar **Skip for now** i continuar.
 
-11. A *Profile configuration*, omplir el nom, el nom del servidor, el nom d'usuari i la contrasenya.
-
-    > **Recomanació:** en aquesta pràctica s'ha fet servir `usuari` com a nom d'usuari i també com a contrasenya, perquè sigui fàcil de recordar. Cadascú pot posar-hi el que vulgui; en un servidor real caldria una contrasenya robusta.
-
-12. A la pantalla d'**Ubuntu Pro**, deixar marcat **Skip for now**.
-
-13. A *SSH configuration*, marcar **Instalar servidor OpenSSH** i **Permitir autenticación con contraseña por SSH**.
-
-14. Esperar que acabi la instal·lació del sistema.
+15. A la pantalla d'SSH, marcar **Instalar servidor OpenSSH**. Serveix per poder connectar-se al servidor des d'un altre ordinador.
 
 
-15. Quan aparegui **Installation complete!**, seleccionar **Reiniciar ahora** i treure la ISO de la unitat òptica.
+16. Esperar. Van sortint moltes línies de text per pantalla; és normal i triga una estona.
 
-16. Iniciar sessió amb l'usuari i la contrasenya creats.
+17. Quan surt **Installation complete!**, anar a **Reiniciar ahora**.
 
-17. Actualitzar el sistema:
+18. Quan torna a arrencar, escriure l'usuari i la contrasenya. El text de la contrasenya no es veu mentre s'escriu, però s'està escrivint igualment.
+
+19. Ja dins del servidor, actualitzar-lo amb aquesta ordre:
 
 ```bash
     sudo apt update && sudo apt upgrade -y
 ```
+## Comprovacions
+- [ ] La màquina arrenca i surt la pantalla per iniciar sessió.
+- [ ] Es pot entrar amb l'usuari i la contrasenya creats.
+- [ ] Hi ha Internet dins del servidor (`ping -c4 google.com`).
+- [ ] Es veu l'adreça IP del servidor amb l'ordre `ip a`.
+- [ ] En apagar i tornar a engegar la màquina, tot segueix igual.
+
+## Incidències i solucions
+| Incidència | Solució |
+|---         |---      |
+| La instal·lació comença sola i no deixa triar res | Havia deixat marcada la casella *Proceed with Unattended Installation*. Cal esborrar la màquina i tornar-la a crear amb la casella desmarcada. |
+| El ratolí es queda enganxat dins de la finestra | Prémer la tecla **Ctrl de la dreta** per alliberar-lo. |
+| En escriure la contrasenya no es veu res | És normal, Linux no mostra els caràcters. S'escriu igualment i es prem Enter. |
+| En reiniciar torna a sortir l'instal·lador | Cal treure la ISO des del menú **Dispositius → Unitats òptiques → Treu el disc**. |
+| La màquina va lenta | Tancar programes de l'ordinador real o baixar la memòria assignada. |
+
+## Recursos
+- [Pàgina oficial de VirtualBox](https://www.virtualbox.org/)
+- [Descàrrega d'Ubuntu Server](https://ubuntu.com/download/server)
+- [Documentació consultada](https://docs.github.com/)
