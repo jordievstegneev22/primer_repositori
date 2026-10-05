@@ -51,7 +51,7 @@ Crear una màquina virtual amb VirtualBox i instal·lar-hi Ubuntu Server. L'obje
 17. Quan surt **Installation complete!**, anar a **Reiniciar ahora**.
 ![Instal·lació acabada](/img/Captura%20de%20pantalla%202026-10-05%20152307.png)
 18. Quan torna a arrencar, escriure l'usuari i la contrasenya. El text de la contrasenya no es veu mentre s'escriu, però s'està escrivint igualment.
-![Sessió iniciada al servidor](/img/Captura%20de%20pantalla%202026-10-05%20152845.png)
+![Sessió iniciada al servidor](/img/Captura%20de%20pantalla%202026-10-05%20153001.png)
 19. Ja dins del servidor, actualitzar-lo amb aquesta ordre:
 
 ```bash
