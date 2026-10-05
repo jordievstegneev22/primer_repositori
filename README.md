@@ -35,17 +35,17 @@ Crear una màquina virtual amb VirtualBox i instal·lar-hi Ubuntu Server. L'obje
 10. A la pantalla de xarxa, només comprovar que surt una adreça IP (a mi em va sortir `10.0.2.15`) i continuar.
 ![Configuració de la xarxa](/img/Captura%20de%20pantalla%202026-10-05%20152018.png)
 11. Deixar l'adreça del servidor de descàrregues tal com ve i continuar.
-
-12. A la pantalla del disc, deixar marcat **Use an entire disk** i continuar. Quan avisa que esborrarà el disc, acceptar: només esborra el disc virtual, no el de l'ordinador real.
 ![Configuració del disc](/img/Captura%20de%20pantalla%202026-10-05%20152056.png)
-13. Omplir el nom, el nom del servidor, l'usuari i la contrasenya.
-
-    > Jo he posat `usuari` com a nom d'usuari i també `usuari` com a contrasenya, perquè és fàcil de recordar. Cadascú pot posar el que vulgui, però és important no oblidar-la perquè després cal per entrar.
+12. A la pantalla del disc, deixar marcat **Use an entire disk** i continuar. Quan avisa que esborrarà el disc, acceptar: només esborra el disc virtual, no el de l'ordinador real.
 ![Crear l'usuari](/img/Captura%20de%20pantalla%202026-10-05%20152117.png)
+13. Omplir el nom, el nom del servidor, l'usuari i la contrasenya.
+![Crear l'usuari](/img/Captura%20de%20pantalla%202026-10-05%20152222.png)
+    > Jo he posat `usuari` com a nom d'usuari i també `usuari` com a contrasenya, perquè és fàcil de recordar. Cadascú pot posar el que vulgui, però és important no oblidar-la perquè després cal per entrar.
+
 14. A la pantalla d'**Ubuntu Pro**, deixar **Skip for now** i continuar.
 
 15. A la pantalla d'SSH, marcar **Instalar servidor OpenSSH**. Serveix per poder connectar-se al servidor des d'un altre ordinador.
-![Configuració d'SSH](/img/Captura%20de%20pantalla%202026-10-05%20152222.png)
+![Configuració d'SSH]
 16. Esperar. Van sortint moltes línies de text per pantalla; és normal i triga una estona.
 ![Instal·lant el sistema](/img/Captura%20de%20pantalla%202026-10-05%20152241.png)
 17. Quan surt **Installation complete!**, anar a **Reiniciar ahora**.
