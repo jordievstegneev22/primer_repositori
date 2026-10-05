@@ -47,11 +47,11 @@ Crear una màquina virtual amb VirtualBox i instal·lar-hi Ubuntu Server. L'obje
 15. A la pantalla d'SSH, marcar **Instalar servidor OpenSSH**. Serveix per poder connectar-se al servidor des d'un altre ordinador.
 ![Configuració d'SSH]
 16. Esperar. Van sortint moltes línies de text per pantalla; és normal i triga una estona.
-![Instal·lant el sistema](/img/Captura%20de%20pantalla%202026-10-05%20152241.png)
+![Instal·lant el sistema](/img/Captura%20de%20pantalla%202026-10-05%20152329.png)
 17. Quan surt **Installation complete!**, anar a **Reiniciar ahora**.
 ![Instal·lació acabada](/img/Captura%20de%20pantalla%202026-10-05%20152307.png)
 18. Quan torna a arrencar, escriure l'usuari i la contrasenya. El text de la contrasenya no es veu mentre s'escriu, però s'està escrivint igualment.
-![Sessió iniciada al servidor](/img/Captura%20de%20pantalla%202026-10-05%20152329.png)
+![Sessió iniciada al servidor](/img/Captura%20de%20pantalla%202026-10-05%20152845.png)
 19. Ja dins del servidor, actualitzar-lo amb aquesta ordre:
 
 ```bash
