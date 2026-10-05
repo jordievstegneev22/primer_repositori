@@ -43,7 +43,7 @@ Crear una màquina virtual amb VirtualBox i instal·lar-hi Ubuntu Server. L'obje
     > Jo he posat `usuari` com a nom d'usuari i també `usuari` com a contrasenya, perquè és fàcil de recordar. Cadascú pot posar el que vulgui, però és important no oblidar-la perquè després cal per entrar.
 
 14. A la pantalla d'**Ubuntu Pro**, deixar **Skip for now** i continuar.
-
+(/img/Captura%20de%20pantalla%202026-10-05%20152241.png)
 15. A la pantalla d'SSH, marcar **Instalar servidor OpenSSH**. Serveix per poder connectar-se al servidor des d'un altre ordinador.
 ![Configuració d'SSH]
 16. Esperar. Van sortint moltes línies de text per pantalla; és normal i triga una estona.
